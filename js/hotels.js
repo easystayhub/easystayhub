@@ -1,6 +1,6 @@
 const sharedPhoneDisplay = "+91 97418 96133 / +91 95629 36266 / +91 99017 30322";
 const sharedWhatsapp = "919741896133";
-const sharedEmail = "easystayhub@gmail.com";
+const sharedEmail = "contact@easystayhub.com";
 
 window.hotelCatalog = [
   {

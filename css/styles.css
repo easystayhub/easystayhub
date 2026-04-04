@@ -48,6 +48,15 @@ img {
   height: auto;
 }
 
+section img,
+.hotel-card img,
+.event-card img,
+.detail-gallery__thumb img,
+.detail-gallery__stage-image,
+.gallery-lightbox__figure img {
+  content-visibility: auto;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -282,6 +291,12 @@ select {
   padding: 4rem 0 3rem;
 }
 
+.hero,
+.detail-hero,
+.footer {
+  content-visibility: visible;
+}
+
 .hero__layout,
 .section-grid,
 .rooms-grid,
@@ -452,6 +467,8 @@ select {
 
 .section {
   padding: 5.5rem 0;
+  content-visibility: auto;
+  contain-intrinsic-size: 700px;
 }
 
 .section-grid {
@@ -578,6 +595,7 @@ select {
 .event-card img {
   height: 220px;
   object-fit: cover;
+  aspect-ratio: 4 / 3;
 }
 
 .hotel-card__body,
@@ -899,6 +917,7 @@ select {
 .detail-hero__visual img {
   height: 100%;
   object-fit: cover;
+  aspect-ratio: 4 / 3;
 }
 
 .detail-hero__info {

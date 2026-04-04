@@ -31,7 +31,7 @@ function renderHotelCards() {
     .map(
       (hotel) => `
         <article class="hotel-card">
-          <img src="${hotel.heroImage}" alt="${hotel.name}">
+          <img src="${hotel.heroImage}" alt="${hotel.name}" loading="lazy" decoding="async">
           <div class="hotel-card__body">
             <div class="hotel-card__top">
               <h3>${hotel.name}</h3>
@@ -117,6 +117,7 @@ function renderHotelDetailsPage() {
                 alt="${hotel.name} gallery image 1"
                 class="detail-gallery__stage-image"
                 data-gallery-stage
+                decoding="async"
               >
             </div>
             <div class="detail-gallery__stage-bar">
@@ -140,7 +141,7 @@ function renderHotelDetailsPage() {
                     aria-label="View image ${index + 1}"
                     aria-pressed="${index === 0 ? "true" : "false"}"
                   >
-                    <img src="${image}" alt="${hotel.name} thumbnail ${index + 1}">
+                    <img src="${image}" alt="${hotel.name} thumbnail ${index + 1}" loading="lazy" decoding="async">
                     <span class="detail-gallery__thumb-meta">Photo ${index + 1}</span>
                   </button>
                 `
@@ -173,7 +174,7 @@ function renderHotelDetailsPage() {
         <button class="gallery-lightbox__close" type="button" aria-label="Close gallery" data-gallery-close>&times;</button>
         <button class="gallery-lightbox__nav gallery-lightbox__nav--prev" type="button" aria-label="Previous image" data-gallery-prev>&lsaquo;</button>
         <figure class="gallery-lightbox__figure">
-          <img src="${hotel.gallery[0]}" alt="${hotel.name} gallery image 1" data-gallery-modal-image>
+          <img src="${hotel.gallery[0]}" alt="${hotel.name} gallery image 1" data-gallery-modal-image decoding="async">
           <figcaption class="gallery-lightbox__caption">
             <span>${hotel.name}</span>
             <strong data-gallery-modal-counter>1 / ${hotel.gallery.length}</strong>
