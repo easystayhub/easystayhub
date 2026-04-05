@@ -46,6 +46,27 @@ window.hotelCatalog = [
     ]
   },
   {
+    slug: "guru-residency",
+    name: "GURU RESIDENCY",
+    shortDescription: "A neat Mysore stay with A/C and non-A/C room options, simple interiors, and dependable short-stay comfort.",
+    description:
+      "GURU RESIDENCY offers clean, practical accommodation for guests looking for straightforward comfort in Mysore. With spacious rooms, tidy interiors, and both A/C and non-A/C options, the property is well suited for solo travelers, families, and quick city stays.",
+    location: "Mysore, Karnataka, India",
+    contactPhone: sharedPhoneDisplay,
+    contactEmail: sharedEmail,
+    whatsapp: sharedWhatsapp,
+    heroImage: "assets/images/guru-residency/front.jpeg",
+    amenities: ["A/C Rooms", "Non-A/C Rooms", "Spacious Rooms", "Family Stay", "Clean Interiors", "Direct WhatsApp Support"],
+    gallery: [
+      "assets/images/guru-residency/front.jpeg",
+      "assets/images/guru-residency/room-1.jpeg",
+      "assets/images/guru-residency/room-2.jpeg",
+      "assets/images/guru-residency/room-3.jpeg",
+      "assets/images/guru-residency/room-4.jpeg",
+      "assets/images/guru-residency/room-5.jpeg"
+    ]
+  },
+  {
     slug: "garden-escape",
     name: "Garden Escape Hotel",
     shortDescription: "A calm retreat surrounded by soft landscaping, quiet lounge spaces, and restorative suites.",
