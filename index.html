@@ -14,6 +14,9 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/branding/logo-32.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="assets/branding/logo-128.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/branding/logo-clean-512.png">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -35,11 +38,14 @@
     <header class="header" id="header">
       <div class="container header__inner">
         <a class="brand" href="#hero" aria-label="EasyStayHub home">
-          <span class="brand__crest">E</span>
-          <span class="brand__text">
-            <strong>EasyStayHub</strong>
-            <small>Hotel Booking Platform</small>
-          </span>
+          <img
+            class="brand__icon"
+            src="assets/branding/logo-clean-256.png"
+            alt="EasyStayHub logo"
+            fetchpriority="high"
+            decoding="async"
+          >
+          <span class="brand__wordmark">EasyStayHub</span>
         </a>
 
         <button
@@ -400,11 +406,14 @@
       <div class="container footer__grid">
         <div>
           <a class="brand brand--footer" href="#hero">
-            <span class="brand__crest">E</span>
-            <span class="brand__text">
-              <strong>EasyStayHub</strong>
-              <small>Hotel Booking Platform</small>
-            </span>
+            <img
+              class="brand__icon brand__icon--footer"
+              src="assets/branding/logo-clean-256.png"
+              alt="EasyStayHub logo"
+              loading="lazy"
+              decoding="async"
+            >
+            <span class="brand__wordmark brand__wordmark--footer">EasyStayHub</span>
           </a>
           <p class="footer__summary">
             EasyStayHub helps travelers discover trusted stays with property details, gallery images, location info,
