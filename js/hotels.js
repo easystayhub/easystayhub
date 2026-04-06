@@ -94,14 +94,17 @@ window.hotelCatalog = [
     contactPhone: sharedPhoneDisplay,
     contactEmail: sharedEmail,
     whatsapp: sharedWhatsapp,
-    heroImage: "assets/images/tm-residency/front.jpeg",
-    amenities: ["Modern Rooms", "Clean Interiors", "TV", "Couple-Friendly Stay", "Budget-Friendly", "Direct WhatsApp Support"],
-    gallery: [
-      "assets/images/tm-residency/front.jpeg",
-      "assets/images/tm-residency/room-1.jpeg",
-      "assets/images/tm-residency/room-2.jpeg",
-      "assets/images/tm-residency/gallery-1.jpeg"
-    ]
+      heroImage: "assets/images/tm-residency/building-front.jpeg",
+      amenities: ["Modern Rooms", "Clean Interiors", "TV", "Couple-Friendly Stay", "Budget-Friendly", "Direct WhatsApp Support"],
+      gallery: [
+        "assets/images/tm-residency/building-front.jpeg",
+        "assets/images/tm-residency/building-angle.jpeg",
+        "assets/images/tm-residency/reception.jpeg",
+        "assets/images/tm-residency/front.jpeg",
+        "assets/images/tm-residency/room-1.jpeg",
+        "assets/images/tm-residency/room-2.jpeg",
+        "assets/images/tm-residency/gallery-1.jpeg"
+      ]
   }
   // {
   //   slug: "garden-escape",
