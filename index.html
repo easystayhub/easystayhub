@@ -24,7 +24,7 @@
     <header class="topbar">
       <div class="container topbar__inner">
         <div class="topbar__contact">
-          <a href="mailto:contact@easystayhub.com">contact@easystayhub.com</a>
+          <a href="mailto:easystayhub@gmail.com">easystayhub@gmail.com</a>
           <span>+91 97418 96133</span>
         </div>
         <div class="topbar__links">
@@ -355,18 +355,26 @@
             </p>
           </div>
 
-          <form class="booking-form" id="bookingForm">
+          <form class="booking-form" id="bookingForm" data-whatsapp="919741896133">
+            <label>
+              Name
+              <input type="text" name="name" placeholder="Enter your name" required>
+            </label>
+            <label>
+              Phone Number
+              <input type="tel" name="phone" placeholder="Enter your phone number" required>
+            </label>
             <label>
               Arrival
-              <input type="date" required>
+              <input type="date" name="arrival">
             </label>
             <label>
               Departure
-              <input type="date" required>
+              <input type="date" name="departure">
             </label>
             <label>
               Guests
-              <select required>
+              <select name="guests">
                 <option value="">Select</option>
                 <option>1 Guest</option>
                 <option>2 Guests</option>
@@ -374,7 +382,11 @@
                 <option>4+ Guests</option>
               </select>
             </label>
-            <button class="button button--full" type="submit">Check Availability</button>
+            <label>
+              Enquiry Details
+              <input type="text" name="details" placeholder="Room requirement / dates / event details">
+            </label>
+            <button class="button button--full" type="submit">Enquire Now</button>
             <p class="booking-message" id="bookingMessage" aria-live="polite"></p>
           </form>
         </div>
@@ -490,9 +502,9 @@
 
         <div>
           <h3>Address</h3>
-          <p>A108 Adam Street</p>
-          <p>New York, NY 535022</p>
-          <p>United States</p>
+          <p>Devegowda Circle, Ring Rd,</p>
+          <p>near HP Petrol Bunk, Alanahalli,</p>
+          <p>Mysuru, Karnataka 570028</p>
         </div>
 
         <div>

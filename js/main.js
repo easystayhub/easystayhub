@@ -51,8 +51,8 @@ function initHeroSpotlight() {
   const hotelMap = new Map(getHotels().map((hotel) => [hotel.slug, hotel]));
   const spotlightHotels = [
     { slug: "haya-residency", image: "assets/images/hero-spotlight/haya-residency.webp" },
-    { slug: "pergola-lodge", image: "assets/images/hero-spotlight/pergola-lodge.webp" },
-    { slug: "tm-residency", image: "assets/images/hero-spotlight/tm-residency.webp" }
+    { slug: "pergola-lodge", image: "assets/images/hero-spotlight/tm-residency.webp" },
+    { slug: "tm-residency", image: "assets/images/hero-spotlight/pergola-lodge.webp" }
   ]
     .map((item) => {
       const hotel = hotelMap.get(item.slug);
@@ -438,8 +438,34 @@ function initBookingForm() {
 
   bookingForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    bookingMessage.textContent = "Availability request received. Our concierge will follow up shortly.";
-    bookingForm.reset();
+    const formData = new FormData(bookingForm);
+    const name = String(formData.get("name") || "").trim();
+    const phone = String(formData.get("phone") || "").trim();
+    const arrival = String(formData.get("arrival") || "").trim();
+    const departure = String(formData.get("departure") || "").trim();
+    const guests = String(formData.get("guests") || "").trim();
+    const details = String(formData.get("details") || "").trim();
+    const whatsappNumber = bookingForm.dataset.whatsapp || "919741896133";
+
+    if (!name || !phone) {
+      bookingMessage.textContent = "Name and phone number are required.";
+      return;
+    }
+
+    const enquiryLines = [
+      "*New Enquiry - EasyStayHub*",
+      "",
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      `Arrival: ${arrival || "Not provided"}`,
+      `Departure: ${departure || "Not provided"}`,
+      `Guests: ${guests || "Not provided"}`,
+      `Details: ${details || "Not provided"}`
+    ];
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(enquiryLines.join("\n"))}`;
+    bookingMessage.textContent = "Redirecting to WhatsApp...";
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   });
 }
 
