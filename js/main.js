@@ -19,6 +19,21 @@ const galleryState = {
   stageCounter: null
 };
 
+function iconMarkup(name) {
+  const icons = {
+    location:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10Z"></path><circle cx="12" cy="11" r="2.2"></circle></svg>',
+    phone:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.2v3a2 2 0 0 1-2.18 2 19.82 19.82 0 0 1-8.64-3.08 19.5 19.5 0 0 1-6-6A19.82 19.82 0 0 1 1.1 3.44 2 2 0 0 1 3.09 1.3h3a2 2 0 0 1 2 1.72l.34 2.57a2 2 0 0 1-.57 1.72L6.5 8.66a16 16 0 0 0 8.84 8.84l1.35-1.36a2 2 0 0 1 1.72-.57l2.57.34A2 2 0 0 1 21 16.2Z"></path></svg>',
+    email:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg>',
+    amenity:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"></path></svg>'
+  };
+
+  return `<span class="ui-icon ui-icon--${name}" aria-hidden="true">${icons[name] || icons.amenity}</span>`;
+}
+
 function getHotels() {
   return Array.isArray(window.hotelCatalog) ? window.hotelCatalog : [];
 }
@@ -38,11 +53,14 @@ function renderHotelCards() {
               <p>${hotel.shortDescription}</p>
             </div>
             <div class="hotel-card__meta">
-              <span>${hotel.location}</span>
-              <span>${hotel.contactPhone}</span>
+              <span>${iconMarkup("location")}<span>${hotel.location}</span></span>
+              <span>${iconMarkup("phone")}<span>${hotel.contactPhone}</span></span>
             </div>
             <div class="hotel-card__amenities">
-              ${hotel.amenities.slice(0, 3).map((item) => `<span>${item}</span>`).join("")}
+              ${hotel.amenities
+                .slice(0, 3)
+                .map((item) => `<span>${iconMarkup("amenity")}<span>${item}</span></span>`)
+                .join("")}
             </div>
             <div class="hotel-card__actions">
               <a class="text-link" href="hotel-details.html?hotel=${hotel.slug}">View Details</a>
@@ -75,9 +93,9 @@ function renderHotelDetailsPage() {
           <h1>${hotel.name}</h1>
           <p class="detail-hero__lead">${hotel.description}</p>
           <div class="detail-hero__info">
-            <div><strong>Location</strong><span>${hotel.location}</span></div>
-            <div><strong>Phone</strong><span>${hotel.contactPhone}</span></div>
-            <div><strong>Email</strong><span>${hotel.contactEmail}</span></div>
+            <div>${iconMarkup("location")}<div><strong>Location</strong><span>${hotel.location}</span></div></div>
+            <div>${iconMarkup("phone")}<div><strong>Phone</strong><span>${hotel.contactPhone}</span></div></div>
+            <div>${iconMarkup("email")}<div><strong>Email</strong><span>${hotel.contactEmail}</span></div></div>
           </div>
           <div class="hero__actions">
             <a class="button" href="https://wa.me/${hotel.whatsapp}" target="_blank" rel="noreferrer">Chat on WhatsApp</a>
@@ -97,7 +115,7 @@ function renderHotelDetailsPage() {
           <h2>Everything included with your stay at ${hotel.name}.</h2>
         </div>
         <div class="detail-amenities">
-          ${hotel.amenities.map((item) => `<div class="detail-amenity">${item}</div>`).join("")}
+          ${hotel.amenities.map((item) => `<div class="detail-amenity">${iconMarkup("amenity")}<span>${item}</span></div>`).join("")}
         </div>
       </div>
     </section>
