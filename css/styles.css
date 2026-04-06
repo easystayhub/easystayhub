@@ -787,6 +787,19 @@ select {
 
 .event-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.event-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .event-card__body span {
