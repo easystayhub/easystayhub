@@ -67,79 +67,116 @@ window.hotelCatalog = [
     ]
   },
   {
-    slug: "garden-escape",
-    name: "Garden Escape Hotel",
-    shortDescription: "A calm retreat surrounded by soft landscaping, quiet lounge spaces, and restorative suites.",
+    slug: "royal-guest-house",
+    name: "ROYAL GUEST HOUSE",
+    shortDescription: "A practical stay near Devegowda Circle with clean rooms, reception support, and easy access around Alanahalli.",
     description:
-      "Garden Escape Hotel offers a slower, more private stay experience with courtyard-facing suites, relaxed interiors, and a quieter atmosphere suited for couples and longer stays.",
-    location: "Hillside Gardens District, Karnataka, India",
+      "ROYAL GUEST HOUSE offers straightforward, budget-friendly accommodation for guests looking for neat interiors, simple room layouts, and dependable support in Mysuru. Its location near Devegowda Circle and Ring Road makes it a convenient option for short city stays, family visits, and regular travel stopovers.",
+    location: "Near Devagowda Circle, Ring Rd, Alanahalli, Mysuru, Karnataka 570028",
     contactPhone: sharedPhoneDisplay,
     contactEmail: sharedEmail,
     whatsapp: sharedWhatsapp,
-    heroImage: "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/showcase-8.webp",
-    amenities: ["Wellness Spa", "Garden Courtyard", "Breakfast Terrace", "Family Rooms", "Free WiFi", "Concierge"],
+    heroImage: "assets/images/royal-guest-house/front.jpeg",
+    amenities: ["Clean Rooms", "Reception Desk", "Family Stay", "Budget-Friendly", "Easy Road Access", "Direct WhatsApp Support"],
     gallery: [
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/showcase-8.webp",
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/room-19.webp",
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/gallery-5.webp",
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/amenities-4.webp"
+      "assets/images/royal-guest-house/front.jpeg",
+      "assets/images/royal-guest-house/reception.jpeg",
+      "assets/images/royal-guest-house/room-1.jpeg"
     ]
   },
   {
-    slug: "city-lights-stay",
-    name: "City Lights Stay",
-    shortDescription: "An urban stay with practical rooms, strong connectivity, and easy access to city movement.",
+    slug: "tm-residency",
+    name: "TM RESIDENCY",
+    shortDescription: "A clean, no-fuss stay with modern rooms, simple interiors, and dependable comfort for city stopovers.",
     description:
-      "City Lights Stay is meant for travelers who want convenient comfort, quick access to transport, and rooms that support both short visits and business-focused stays.",
-    location: "Central City District, Karnataka, India",
+      "TM RESIDENCY offers practical accommodation for travelers looking for neat rooms, tidy corridors, and straightforward short-stay comfort in Mysuru. With modern room finishes and an easy-to-use layout, the property works well for solo guests, couples, and regular business or transit stays.",
+    location: "Bonthagahalli, Mysore,Karnataka",
     contactPhone: sharedPhoneDisplay,
     contactEmail: sharedEmail,
     whatsapp: sharedWhatsapp,
-    heroImage: "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/room-6.webp",
-    amenities: ["A/C Rooms", "WiFi", "Reception", "Late Check-in", "City Access", "Daily Housekeeping"],
+    heroImage: "assets/images/tm-residency/front.jpeg",
+    amenities: ["Modern Rooms", "Clean Interiors", "TV", "Couple-Friendly Stay", "Budget-Friendly", "Direct WhatsApp Support"],
     gallery: [
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/room-6.webp",
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/gallery-12.webp",
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/gallery-8.webp",
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/location-4.webp"
-    ]
-  },
-  {
-    slug: "family-bay-residency",
-    name: "Family Bay Residency",
-    shortDescription: "A larger family-friendly stay with spacious rooms and a relaxed atmosphere for group travel.",
-    description:
-      "Family Bay Residency focuses on practical comfort for families and longer stays, with room layouts that feel open, calm, and easy to settle into.",
-    location: "Bluewater Bay, Karnataka, India",
-    contactPhone: sharedPhoneDisplay,
-    contactEmail: sharedEmail,
-    whatsapp: sharedWhatsapp,
-    heroImage: "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/room-12.webp",
-    amenities: ["Family Rooms", "Parking", "Dining Access", "Free WiFi", "A/C Rooms", "Support Desk"],
-    gallery: [
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/room-12.webp",
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/gallery-3.webp",
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/gallery-15.webp",
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/amenities-3.webp"
-    ]
-  },
-  {
-    slug: "event-reserve-lodge",
-    name: "Event Reserve Lodge",
-    shortDescription: "A stay option tailored for group bookings, celebrations, and event-related accommodation.",
-    description:
-      "Event Reserve Lodge works well for wedding groups, private gatherings, and guests who need coordinated accommodation around larger social or business events.",
-    location: "Celebration Quarter, Karnataka, India",
-    contactPhone: sharedPhoneDisplay,
-    contactEmail: sharedEmail,
-    whatsapp: sharedWhatsapp,
-    heroImage: "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/event-1.webp",
-    amenities: ["Group Stay", "Event Planning Support", "Restaurant Access", "Parking", "A/C Rooms", "Direct Contact"],
-    gallery: [
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/event-1.webp",
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/event-4.webp",
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/event-8.webp",
-      "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/gallery-8.webp"
+      "assets/images/tm-residency/front.jpeg",
+      "assets/images/tm-residency/room-1.jpeg",
+      "assets/images/tm-residency/room-2.jpeg",
+      "assets/images/tm-residency/gallery-1.jpeg"
     ]
   }
+  // {
+  //   slug: "garden-escape",
+  //   name: "Garden Escape Hotel",
+  //   shortDescription: "A calm retreat surrounded by soft landscaping, quiet lounge spaces, and restorative suites.",
+  //   description:
+  //     "Garden Escape Hotel offers a slower, more private stay experience with courtyard-facing suites, relaxed interiors, and a quieter atmosphere suited for couples and longer stays.",
+  //   location: "Hillside Gardens District, Karnataka, India",
+  //   contactPhone: sharedPhoneDisplay,
+  //   contactEmail: sharedEmail,
+  //   whatsapp: sharedWhatsapp,
+  //   heroImage: "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/showcase-8.webp",
+  //   amenities: ["Wellness Spa", "Garden Courtyard", "Breakfast Terrace", "Family Rooms", "Free WiFi", "Concierge"],
+  //   gallery: [
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/showcase-8.webp",
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/room-19.webp",
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/gallery-5.webp",
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/amenities-4.webp"
+  //   ]
+  // },
+  // {
+  //   slug: "city-lights-stay",
+  //   name: "City Lights Stay",
+  //   shortDescription: "An urban stay with practical rooms, strong connectivity, and easy access to city movement.",
+  //   description:
+  //     "City Lights Stay is meant for travelers who want convenient comfort, quick access to transport, and rooms that support both short visits and business-focused stays.",
+  //   location: "Central City District, Karnataka, India",
+  //   contactPhone: sharedPhoneDisplay,
+  //   contactEmail: sharedEmail,
+  //   whatsapp: sharedWhatsapp,
+  //   heroImage: "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/room-6.webp",
+  //   amenities: ["A/C Rooms", "WiFi", "Reception", "Late Check-in", "City Access", "Daily Housekeeping"],
+  //   gallery: [
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/room-6.webp",
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/gallery-12.webp",
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/gallery-8.webp",
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/location-4.webp"
+  //   ]
+  // },
+  // {
+  //   slug: "family-bay-residency",
+  //   name: "Family Bay Residency",
+  //   shortDescription: "A larger family-friendly stay with spacious rooms and a relaxed atmosphere for group travel.",
+  //   description:
+  //     "Family Bay Residency focuses on practical comfort for families and longer stays, with room layouts that feel open, calm, and easy to settle into.",
+  //   location: "Bluewater Bay, Karnataka, India",
+  //   contactPhone: sharedPhoneDisplay,
+  //   contactEmail: sharedEmail,
+  //   whatsapp: sharedWhatsapp,
+  //   heroImage: "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/room-12.webp",
+  //   amenities: ["Family Rooms", "Parking", "Dining Access", "Free WiFi", "A/C Rooms", "Support Desk"],
+  //   gallery: [
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/room-12.webp",
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/gallery-3.webp",
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/gallery-15.webp",
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/amenities-3.webp"
+  //   ]
+  // },
+  // {
+  //   slug: "event-reserve-lodge",
+  //   name: "Event Reserve Lodge",
+  //   shortDescription: "A stay option tailored for group bookings, celebrations, and event-related accommodation.",
+  //   description:
+  //     "Event Reserve Lodge works well for wedding groups, private gatherings, and guests who need coordinated accommodation around larger social or business events.",
+  //   location: "Celebration Quarter, Karnataka, India",
+  //   contactPhone: sharedPhoneDisplay,
+  //   contactEmail: sharedEmail,
+  //   whatsapp: sharedWhatsapp,
+  //   heroImage: "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/event-1.webp",
+  //   amenities: ["Group Stay", "Event Planning Support", "Restaurant Access", "Parking", "A/C Rooms", "Direct Contact"],
+  //   gallery: [
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/event-1.webp",
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/event-4.webp",
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/event-8.webp",
+  //     "https://bootstrapmade.com/content/demo/Grandoria/assets/img/hotel/gallery-8.webp"
+  //   ]
+  // }
 ];
