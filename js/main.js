@@ -18,6 +18,7 @@ const galleryState = {
   stageImage: null,
   stageCounter: null
 };
+let heroSpotlightInterval = null;
 
 function iconMarkup(name) {
   const icons = {
@@ -38,6 +39,55 @@ function getHotels() {
   return Array.isArray(window.hotelCatalog) ? window.hotelCatalog : [];
 }
 
+function initHeroSpotlight() {
+  const title = document.querySelector("[data-hero-hotel-name]");
+  const image = document.querySelector("[data-hero-hotel-image]");
+  const cardLink = document.querySelector("[data-hero-hotel-link]");
+  const footerLink = document.querySelector("[data-hero-hotel-link-text]");
+  const counter = document.querySelector("[data-hero-hotel-counter]");
+
+  if (!title || !image || !cardLink) return;
+
+  const hotelMap = new Map(getHotels().map((hotel) => [hotel.slug, hotel]));
+  const spotlightHotels = [
+    { slug: "haya-residency", image: "assets/images/hero-spotlight/haya-residency.webp" },
+    { slug: "pergola-lodge", image: "assets/images/hero-spotlight/pergola-lodge.webp" },
+    { slug: "tm-residency", image: "assets/images/hero-spotlight/tm-residency.webp" }
+  ]
+    .map((item) => {
+      const hotel = hotelMap.get(item.slug);
+      return hotel ? { ...hotel, spotlightImage: item.image } : null;
+    })
+    .filter(Boolean);
+
+  const hotels = spotlightHotels.length ? spotlightHotels : getHotels().filter((hotel) => hotel.heroImage).slice(0, 5);
+  if (!hotels.length) return;
+
+  let activeIndex = 0;
+
+  function renderSpotlight(index) {
+    const hotel = hotels[index];
+    title.textContent = hotel.name;
+    image.src = hotel.spotlightImage || hotel.heroImage;
+    image.alt = `${hotel.name} preview`;
+    const href = `hotel-details.html?hotel=${hotel.slug}`;
+    cardLink.href = href;
+    if (footerLink) footerLink.href = href;
+    if (counter) counter.textContent = `${index + 1} / ${hotels.length}`;
+  }
+
+  renderSpotlight(activeIndex);
+
+  if (heroSpotlightInterval) {
+    clearInterval(heroSpotlightInterval);
+  }
+
+  heroSpotlightInterval = setInterval(() => {
+    activeIndex = (activeIndex + 1) % hotels.length;
+    renderSpotlight(activeIndex);
+  }, 3200);
+}
+
 function renderHotelCards() {
   if (!hotelGrid) return;
 
@@ -50,7 +100,6 @@ function renderHotelCards() {
           <div class="hotel-card__body">
             <div class="hotel-card__top">
               <h3>${hotel.name}</h3>
-              <p>${hotel.shortDescription}</p>
             </div>
             <div class="hotel-card__meta">
               <span>${iconMarkup("location")}<span>${hotel.location}</span></span>
@@ -418,6 +467,7 @@ if (navToggle && siteNav) {
 syncHeaderState();
 renderHotelCards();
 renderHotelDetailsPage();
+initHeroSpotlight();
 initCounters();
 initTestimonials();
 initBookingForm();
