@@ -441,8 +441,8 @@ function initBookingForm() {
     const formData = new FormData(bookingForm);
     const name = String(formData.get("name") || "").trim();
     const phone = String(formData.get("phone") || "").trim();
-    const arrival = String(formData.get("arrival") || "").trim();
-    const departure = String(formData.get("departure") || "").trim();
+    const checkin = String(formData.get("checkin") || "").trim();
+    const checkout = String(formData.get("checkout") || "").trim();
     const guests = String(formData.get("guests") || "").trim();
     const details = String(formData.get("details") || "").trim();
     const whatsappNumber = bookingForm.dataset.whatsapp || "919741896133";
@@ -457,8 +457,8 @@ function initBookingForm() {
       "",
       `Name: ${name}`,
       `Phone: ${phone}`,
-      `Arrival: ${arrival || "Not provided"}`,
-      `Departure: ${departure || "Not provided"}`,
+      `Checkin: ${checkin || "Not provided"}`,
+      `Checkout: ${checkout || "Not provided"}`,
       `Guests: ${guests || "Not provided"}`,
       `Details: ${details || "Not provided"}`
     ];
