@@ -310,31 +310,45 @@
         <div class="container cta-panel">
           <div class="cta-panel__copy">
             <span class="eyebrow">Plan Your Escape</span>
-            <h2>Reserve a stay shaped around your dates, pace, and preferences.</h2>
-            <p>
-              Share your travel details and our team will prepare the best available stay options with curated upgrades
-              and personalized extras before arrival.
-            </p>
+            <h2>How to get in touch</h2>
           </div>
 
           <form class="booking-form" id="bookingForm" data-whatsapp="919741896133">
-            <label>
+            <label class="booking-field">
               Name
-              <input type="text" name="name" placeholder="Enter your name" required>
+              <input type="text" name="name" placeholder="Enter your name" required autocomplete="name">
             </label>
-            <label>
+
+            <label class="booking-field">
               Phone Number
-              <input type="tel" name="phone" placeholder="Enter your phone number" required>
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Enter your phone number"
+                required
+                autocomplete="tel"
+                inputmode="tel"
+              >
             </label>
-            <label>
+
+            <label class="booking-field booking-field--span-2">
+              Select Hotel
+              <select name="hotel" id="bookingHotel" required>
+                <option value="">Select</option>
+              </select>
+            </label>
+
+            <label class="booking-field booking-field--checkin">
               Check-in
               <input type="date" name="checkin">
             </label>
-            <label>
+
+            <label class="booking-field booking-field--checkout">
               Check-out
               <input type="date" name="checkout">
             </label>
-            <label>
+
+            <label class="booking-field">
               Guests
               <select name="guests">
                 <option value="">Select</option>
@@ -344,11 +358,13 @@
                 <option>4+ Guests</option>
               </select>
             </label>
-            <label>
+
+            <label class="booking-field booking-field--details">
               Enquiry Details
               <input type="text" name="details" placeholder="Room requirement / dates / event details">
             </label>
-            <button class="button button--full" type="submit">Enquire Now</button>
+
+            <button class="button button--full booking-submit" type="submit">Enquire Now</button>
             <p class="booking-message" id="bookingMessage" aria-live="polite"></p>
           </form>
         </div>

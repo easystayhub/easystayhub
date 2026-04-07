@@ -436,6 +436,19 @@ function initTestimonials() {
 function initBookingForm() {
   if (!bookingForm || !bookingMessage) return;
 
+  const hotelSelect = bookingForm.querySelector('select[name="hotel"]');
+  if (hotelSelect) {
+    const hotels = getHotels();
+    const hasOnlyPlaceholder =
+      hotelSelect.options.length === 1 && String(hotelSelect.options[0].value) === "";
+
+    if (hasOnlyPlaceholder && hotels.length) {
+      hotelSelect.innerHTML =
+        '<option value="">Select</option>' +
+        hotels.map((hotel) => `<option value="${hotel.slug}">${hotel.name}</option>`).join("");
+    }
+  }
+
   bookingForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(bookingForm);
@@ -445,10 +458,25 @@ function initBookingForm() {
     const checkout = String(formData.get("checkout") || "").trim();
     const guests = String(formData.get("guests") || "").trim();
     const details = String(formData.get("details") || "").trim();
-    const whatsappNumber = bookingForm.dataset.whatsapp || "919741896133";
+    const hotelSlug = String(formData.get("hotel") || "").trim();
+
+    let selectedHotelName = "";
+    let whatsappNumber =
+      bookingForm.dataset.whatsapp || "919741896133";
+    if (hotelSlug) {
+      const hotel = getHotels().find((item) => item.slug === hotelSlug);
+      if (hotel?.whatsapp) whatsappNumber = hotel.whatsapp;
+      if (hotel?.name) selectedHotelName = hotel.name;
+    }
+    whatsappNumber = String(whatsappNumber).replace(/[^\d]/g, "");
 
     if (!name || !phone) {
       bookingMessage.textContent = "Name and phone number are required.";
+      return;
+    }
+
+    if (!whatsappNumber) {
+      bookingMessage.textContent = "WhatsApp number is missing for the selected hotel.";
       return;
     }
 
@@ -457,6 +485,7 @@ function initBookingForm() {
       "",
       `Name: ${name}`,
       `Phone: ${phone}`,
+      `Hotel: ${selectedHotelName || hotelSlug || "Not provided"}`,
       `Checkin: ${checkin || "Not provided"}`,
       `Checkout: ${checkout || "Not provided"}`,
       `Guests: ${guests || "Not provided"}`,

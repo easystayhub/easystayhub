@@ -1133,26 +1133,51 @@ select {
 
 .booking-form {
   display: grid;
-  gap: 1rem;
-  padding: 1.3rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
   background: rgba(255, 255, 255, 0.68);
   border: 1px solid var(--line);
+  align-items: start;
 }
 
 .booking-form label {
   display: grid;
   gap: 0.5rem;
   font-weight: 700;
+  width: 100%;
+  min-width: 0;
+}
+
+.booking-field {
+  min-width: 0;
+}
+
+.booking-field--span-2,
+.booking-field--details,
+.booking-submit,
+.booking-message {
+  grid-column: 1 / -1;
 }
 
 .booking-form input,
 .booking-form select {
   min-height: 52px;
-  padding: 0.9rem 1rem;
+  padding: 0.7rem 0.85rem;
   border: 1px solid var(--line);
   border-radius: 14px;
   background: var(--white);
   color: var(--text);
+  width: 100%;
+}
+
+.booking-form input[type="date"] {
+  /* Native date inputs can visually overflow when too short. */
+  min-height: 56px;
+  padding: 0.65rem 0.85rem;
+  line-height: 1.2;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .booking-message {
@@ -1751,6 +1776,20 @@ select {
 
   .booking-form {
     padding: 1rem;
+    gap: 0.6rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .booking-form input,
+  .booking-form select {
+    min-height: 48px;
+    padding: 0.65rem 0.75rem;
+  }
+
+  .booking-form input[type="date"] {
+    /* Override the compact mobile sizing so the date widget doesn't overlap. */
+    min-height: 56px;
+    padding: 0.65rem 0.75rem;
   }
 
   .gallery-lightbox__dialog {
@@ -1771,5 +1810,25 @@ select {
   .gallery-lightbox__nav {
     width: 3.2rem;
     height: 3.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .booking-field--checkin,
+  .booking-field--checkout {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 320px) {
+  .booking-form {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-field--span-2,
+  .booking-field--details,
+  .booking-submit,
+  .booking-message {
+    grid-column: 1 / -1;
   }
 }
