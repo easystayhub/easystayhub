@@ -567,7 +567,7 @@ select {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
-  margin-top: 0.6rem;
+  margin-top: 0.35rem;
 }
 
 .stat-card,
@@ -598,7 +598,7 @@ select {
 }
 
 .section {
-  padding: 5.5rem 0;
+  padding: 3rem 0 2.2rem;
   content-visibility: auto;
   contain-intrinsic-size: 700px;
 }
@@ -686,7 +686,7 @@ select {
 
 .section-heading {
   max-width: 52rem;
-  margin-bottom: 2.2rem;
+  margin-bottom: 0.9rem;
 }
 
 .section-heading--split {
@@ -1752,7 +1752,7 @@ select {
 
   .section,
   .footer {
-    padding: 4rem 0;
+    padding: 2.4rem 0 1.8rem;
   }
 
   .hero {
