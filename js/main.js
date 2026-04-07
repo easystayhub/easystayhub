@@ -141,7 +141,32 @@ function renderHotelDetailsPage() {
 
   if (!hotel) return;
 
-  document.title = `${hotel.name} - EasyStayHub`;
+  const pageUrl = `https://www.easystayhub.in/hotel-details.html?hotel=${hotel.slug}`;
+  const pageTitle = `${hotel.name} | EasyStayHub Mysore Hotel Details`;
+  const pageDescription = `${hotel.name} in Mysore: amenities, room photos, contact details, map link, and direct WhatsApp support.`;
+  document.title = pageTitle;
+
+  const metaDescription = document.querySelector('meta[name="description"]');
+  if (metaDescription) metaDescription.setAttribute("content", pageDescription);
+
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.setAttribute("href", pageUrl);
+
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute("content", pageTitle);
+
+  const ogDescription = document.querySelector('meta[property="og:description"]');
+  if (ogDescription) ogDescription.setAttribute("content", pageDescription);
+
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  if (ogUrl) ogUrl.setAttribute("content", pageUrl);
+
+  const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+  if (twitterTitle) twitterTitle.setAttribute("content", pageTitle);
+
+  const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+  if (twitterDescription) twitterDescription.setAttribute("content", pageDescription);
+
   const mapQuery = `${hotel.name}, ${hotel.location}`;
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
 
