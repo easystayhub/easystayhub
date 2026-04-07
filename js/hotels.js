@@ -14,7 +14,7 @@ window.hotelCatalog = [
     contactEmail: sharedEmail,
     whatsapp: sharedWhatsapp,
     heroImage: "assets/images/haya-residency/front.jpeg",
-    amenities: ["A/C Rooms", "Free WiFi", "Reception Desk", "Family Stay", "Clean Rooms", "Daily Housekeeping"],
+    amenities: ["A/C Rooms", "Free WiFi", "Reception Desk", "Family Stay", "Clean Rooms", "Daily Housekeeping", "Hot Water"],
     gallery: [
       "assets/images/haya-residency/front.jpeg",
       "assets/images/haya-residency/room-1.jpeg",
@@ -33,7 +33,7 @@ window.hotelCatalog = [
     contactEmail: sharedEmail,
     whatsapp: sharedWhatsapp,
     heroImage: "assets/images/pergola-lodge/building-1.jpeg",
-    amenities: ["A/C Rooms", "Multi-Cuisine Restaurant", "Open Lawn Area", "Family Rooms", "Parking", "Direct WhatsApp Support"],
+    amenities: ["A/C Rooms", "Multi-Cuisine Restaurant", "Open Lawn Area", "Family Rooms", "Parking", "Direct WhatsApp Support", "Hot Water"],
     gallery: [
       "assets/images/pergola-lodge/building-1.jpeg",
       "assets/images/pergola-lodge/building-2.jpeg",
@@ -56,7 +56,7 @@ window.hotelCatalog = [
     contactEmail: sharedEmail,
     whatsapp: sharedWhatsapp,
     heroImage: "assets/images/guru-residency/front.jpeg",
-    amenities: ["A/C Rooms", "Non-A/C Rooms", "Spacious Rooms", "Family Stay", "Clean Interiors", "Direct WhatsApp Support"],
+    amenities: ["A/C Rooms", "Non-A/C Rooms", "Spacious Rooms", "Family Stay", "Clean Interiors", "Direct WhatsApp Support", "Hot Water"],
     gallery: [
       "assets/images/guru-residency/front.jpeg",
       "assets/images/guru-residency/room-1.jpeg",
@@ -77,7 +77,7 @@ window.hotelCatalog = [
     contactEmail: sharedEmail,
     whatsapp: sharedWhatsapp,
     heroImage: "assets/images/royal-guest-house/front.jpeg",
-    amenities: ["Clean Rooms", "Reception Desk", "Family Stay", "Budget-Friendly", "Easy Road Access", "Direct WhatsApp Support"],
+    amenities: ["Clean Rooms", "Reception Desk", "Family Stay", "Budget-Friendly", "Easy Road Access", "Direct WhatsApp Support", "Hot Water"],
     gallery: [
       "assets/images/royal-guest-house/front.jpeg",
       "assets/images/royal-guest-house/reception.jpeg",
@@ -95,7 +95,7 @@ window.hotelCatalog = [
     contactEmail: sharedEmail,
     whatsapp: sharedWhatsapp,
       heroImage: "assets/images/tm-residency/building-front.jpeg",
-      amenities: ["Modern Rooms", "Clean Interiors", "TV", "Couple-Friendly Stay", "Budget-Friendly", "Direct WhatsApp Support"],
+      amenities: ["Modern Rooms", "Clean Interiors", "TV", "Couple-Friendly Stay", "Budget-Friendly", "Direct WhatsApp Support", "Hot Water"],
       gallery: [
         "assets/images/tm-residency/building-front.jpeg",
         "assets/images/tm-residency/building-angle.jpeg",
