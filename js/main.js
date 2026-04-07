@@ -94,12 +94,17 @@ function renderHotelCards() {
   const hotels = getHotels();
   hotelGrid.innerHTML = hotels
     .map(
-      (hotel) => `
+      (hotel) => {
+        const mapQuery = `${hotel.name}, ${hotel.location}`;
+        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
+        return `
         <article class="hotel-card">
-          <img src="${hotel.heroImage}" alt="${hotel.name}" loading="lazy" decoding="async">
+          <a class="hotel-card__media" href="hotel-details.html?hotel=${hotel.slug}" aria-label="View details for ${hotel.name}">
+            <img src="${hotel.heroImage}" alt="${hotel.name}" loading="lazy" decoding="async">
+          </a>
           <div class="hotel-card__body">
             <div class="hotel-card__top">
-              <h3>${hotel.name}</h3>
+              <h3><a class="hotel-card__title-link" href="hotel-details.html?hotel=${hotel.slug}">${hotel.name}</a></h3>
             </div>
             <div class="hotel-card__meta">
               <span>${iconMarkup("location")}<span>${hotel.location}</span></span>
@@ -112,12 +117,16 @@ function renderHotelCards() {
                 .join("")}
             </div>
             <div class="hotel-card__actions">
-              <a class="text-link" href="hotel-details.html?hotel=${hotel.slug}">View Details</a>
-              <a class="button button--sm" href="https://wa.me/${hotel.whatsapp}" target="_blank" rel="noreferrer">WhatsApp</a>
+              <div class="hotel-card__links">
+                <a class="text-link" href="hotel-details.html?hotel=${hotel.slug}">View Details</a>
+                <a class="text-link" href="${mapUrl}" target="_blank" rel="noreferrer">View on Map</a>
+              </div>
+              <a class="button button--sm button--full hotel-card__whatsapp" href="https://wa.me/${hotel.whatsapp}" target="_blank" rel="noreferrer">WhatsApp</a>
             </div>
           </div>
         </article>
-      `
+      `;
+      }
     )
     .join("");
 }
@@ -133,6 +142,8 @@ function renderHotelDetailsPage() {
   if (!hotel) return;
 
   document.title = `${hotel.name} - EasyStayHub`;
+  const mapQuery = `${hotel.name}, ${hotel.location}`;
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
 
   root.innerHTML = `
     <section class="detail-hero">
@@ -142,7 +153,7 @@ function renderHotelDetailsPage() {
           <h1>${hotel.name}</h1>
           <p class="detail-hero__lead">${hotel.description}</p>
           <div class="detail-hero__info">
-            <div>${iconMarkup("location")}<div><strong>Location</strong><span>${hotel.location}</span></div></div>
+            <div>${iconMarkup("location")}<div><strong>Location</strong><span><a class="text-link" href="${mapUrl}" target="_blank" rel="noreferrer">View on Map</a></span></div></div>
             <div>${iconMarkup("phone")}<div><strong>Phone</strong><span>${hotel.contactPhone}</span></div></div>
             <div>${iconMarkup("email")}<div><strong>Email</strong><span>${hotel.contactEmail}</span></div></div>
           </div>
@@ -229,7 +240,7 @@ function renderHotelDetailsPage() {
         <div class="detail-contact__card">
           <p><strong>Phone:</strong> ${hotel.contactPhone}</p>
           <p><strong>Email:</strong> ${hotel.contactEmail}</p>
-          <p><strong>Location:</strong> ${hotel.location}</p>
+          <p><strong>Map:</strong> <a class="text-link" href="${mapUrl}" target="_blank" rel="noreferrer">Open in Google Maps</a></p>
           <a class="button button--full" href="https://wa.me/${hotel.whatsapp}" target="_blank" rel="noreferrer">Contact on WhatsApp</a>
         </div>
       </div>
