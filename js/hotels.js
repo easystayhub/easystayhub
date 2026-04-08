@@ -94,17 +94,38 @@ window.hotelCatalog = [
     contactPhone: sharedPhoneDisplay,
     contactEmail: sharedEmail,
     whatsapp: sharedWhatsapp,
-      heroImage: "assets/images/tm-residency/building-front.jpeg",
-      amenities: ["Modern Rooms", "Clean Interiors", "TV", "Couple-Friendly Stay", "Budget-Friendly", "Direct WhatsApp Support", "Hot Water"],
-      gallery: [
-        "assets/images/tm-residency/building-front.jpeg",
-        "assets/images/tm-residency/building-angle.jpeg",
-        "assets/images/tm-residency/reception.jpeg",
-        "assets/images/tm-residency/front.jpeg",
-        "assets/images/tm-residency/room-1.jpeg",
-        "assets/images/tm-residency/room-2.jpeg",
-        "assets/images/tm-residency/gallery-1.jpeg"
-      ]
+    heroImage: "assets/images/tm-residency/building-front.jpeg",
+    amenities: ["Modern Rooms", "Clean Interiors", "TV", "Couple-Friendly Stay", "Budget-Friendly", "Direct WhatsApp Support", "Hot Water"],
+    gallery: [
+      "assets/images/tm-residency/building-front.jpeg",
+      "assets/images/tm-residency/building-angle.jpeg",
+      "assets/images/tm-residency/reception.jpeg",
+      "assets/images/tm-residency/front.jpeg",
+      "assets/images/tm-residency/room-1.jpeg",
+      "assets/images/tm-residency/room-2.jpeg",
+      "assets/images/tm-residency/gallery-1.jpeg"
+    ]
+  },
+  {
+    slug: "tash-comforts",
+    name: "TASH COMFORTS",
+    shortDescription: "Coorg stay with comfortable rooms, parking, and direct support over WhatsApp.",
+    description:
+      "TASH COMFORTS is a convenient stay in Gonikoppal, Coorg with comfortable rooms and easy access to local areas. Guests can book and get support directly over WhatsApp.",
+    location: "Gonikoppa, Karnataka 571213",
+    contactPhone: sharedPhoneDisplay,
+    contactEmail: sharedEmail,
+    whatsapp: sharedWhatsapp,
+    heroImage: "assets/images/tash-comforts/gallery-1.png",
+    amenities: ["A/C Rooms", "Free WiFi", "Parking", "Reception Desk", "Hot Water", "Direct WhatsApp Support"],
+    gallery: [
+      "assets/images/tash-comforts/gallery-1.png",
+      "assets/images/tash-comforts/gallery-3.png",
+      "assets/images/tash-comforts/gallery-4.png",
+      "assets/images/tash-comforts/gallery-5.png",
+      "assets/images/tash-comforts/gallery-8.png",
+      "assets/images/tash-comforts/gallery-9.png"
+    ]
   }
   // {
   //   slug: "garden-escape",
