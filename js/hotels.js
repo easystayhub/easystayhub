@@ -126,6 +126,24 @@ window.hotelCatalog = [
       "assets/images/tash-comforts/gallery-8.png",
       "assets/images/tash-comforts/gallery-9.png"
     ]
+  },
+  {
+    slug: "ak-international-lodge",
+    name: "AK INTERNATIONAL LODGE",
+    shortDescription: "Comfortable Mangalore stay with practical room options and direct WhatsApp support.",
+    description:
+      "AK INTERNATIONAL LODGE is a convenient accommodation option in Thokkotu, Mangalore with clean rooms and accessible city connectivity for family and transit travelers.",
+    location: " thokkotu mangalore",
+    contactPhone: sharedPhoneDisplay,
+    contactEmail: sharedEmail,
+    whatsapp: sharedWhatsapp,
+    heroImage: "assets/images/ak-international-lodge/gallery-1.png",
+    amenities: ["A/C Rooms", "Family Rooms", "Free WiFi", "TV", "Parking", "Hot Water", "Direct WhatsApp Support"],
+    gallery: [
+      "assets/images/ak-international-lodge/gallery-1.png",
+      "assets/images/ak-international-lodge/gallery-2.png",
+      "assets/images/ak-international-lodge/gallery-3.png"
+    ]
   }
   // {
   //   slug: "garden-escape",
