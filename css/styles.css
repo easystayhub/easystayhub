@@ -1583,6 +1583,34 @@ select {
   gap: 0.55rem;
 }
 
+.footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 700;
+}
+
+.footer__social-link:hover,
+.footer__social-link:focus-visible {
+  color: #ffffff;
+}
+
+.footer__social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.footer__social-icon svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
 .footer p,
 .footer__summary,
 .footer__links a {
