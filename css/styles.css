@@ -1724,6 +1724,10 @@ select {
     grid-template-columns: 1fr;
   }
 
+  .hotel-card__amenities {
+    display: none;
+  }
+
   .room-feature {
     grid-template-columns: 1fr;
   }
