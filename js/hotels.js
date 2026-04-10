@@ -3,6 +3,7 @@ const sharedWhatsapp = "919741896133";
 const sharedEmail = "easystayhub@gmail.com";
 
 window.hotelCatalog = [
+  
   {
     slug: "haya-residency",
     name: "HAYA RESIDENCY",
@@ -10,7 +11,7 @@ window.hotelCatalog = [
     description:
       "HAYA RESIDENCY is a straightforward accommodation option for guests looking for neat rooms, easy access, and dependable short-stay comfort. The property focuses on clean interiors, essential amenities, and quick guest support for business and family travelers.",
     location: "Devegowda Circle, Ring Rd, near HP Petrol Bunk, Alanahalli, Mysuru, Karnataka 570028",
-    contactPhone: sharedPhoneDisplay,
+    contactPhone: "+91 97418 96133 / +91 96565 97865 /+91 95629 36266 / +91 99017 30322",
     contactEmail: sharedEmail,
     whatsapp: sharedWhatsapp,
     heroImage: "assets/images/haya-residency/front.jpeg",
@@ -51,7 +52,7 @@ window.hotelCatalog = [
     shortDescription: "A neat Mysore stay with A/C and non-A/C room options, simple interiors, and dependable short-stay comfort.",
     description:
       "GURU RESIDENCY offers clean, practical accommodation for guests looking for straightforward comfort in Mysore. With spacious rooms, tidy interiors, and both A/C and non-A/C options, the property is well suited for solo travelers, families, and quick city stays.",
-    location: "Mysore, Karnataka, India",
+    location: "Ring Rd, Bandipalya, Hosahundi, Mysuru, Karnataka 570025",
     contactPhone: sharedPhoneDisplay,
     contactEmail: sharedEmail,
     whatsapp: sharedWhatsapp,
@@ -73,7 +74,7 @@ window.hotelCatalog = [
     description:
       "ROYAL GUEST HOUSE offers straightforward, budget-friendly accommodation for guests looking for neat interiors, simple room layouts, and dependable support in Mysuru. Its location near Devegowda Circle and Ring Road makes it a convenient option for short city stays, family visits, and regular travel stopovers.",
     location: "Near Devagowda Circle, Ring Rd, Alanahalli, Mysuru, Karnataka 570028",
-    contactPhone: sharedPhoneDisplay,
+    contactPhone: "+91 97418 96133 / +91 95629 36266 / +91 99017 30322 / +91 95672 93626",
     contactEmail: sharedEmail,
     whatsapp: sharedWhatsapp,
     heroImage: "assets/images/royal-guest-house/front.jpeg",
@@ -143,6 +144,25 @@ window.hotelCatalog = [
       "assets/images/ak-international-lodge/gallery-1.png",
       "assets/images/ak-international-lodge/gallery-2.png",
       "assets/images/ak-international-lodge/gallery-3.png"
+    ]
+  },
+  {
+    slug: "hotel-star-of-kurla",
+    name: "HOTEL STAR OF KURLA",
+    shortDescription: "A convenient Kurla (West) stay with clean rooms, city access, and direct WhatsApp support.",
+    description:
+      "HOTEL STAR OF KURLA is a practical option for guests looking for a comfortable stay in Mumbai with easy access to nearby hospitals, banks, and local transit points. The property is suited for short city visits, family stays, and budget-conscious travelers.",
+    location: "Madhu Nivas, S. M. Marg, Opp Punjab National Bank, Gol Building, Near Baba Hospital, Kurla (West), Mumbai - 400070",
+    contactPhone: sharedPhoneDisplay,
+    contactEmail: sharedEmail,
+    whatsapp: sharedWhatsapp,
+    heroImage: "assets/images/hotel-star-of-kurla/gallery-1.jpeg",
+    amenities: ["A/C Rooms", "Family Stay", "Clean Rooms", "Budget-Friendly", "City Access", "Direct WhatsApp Support", "Hot Water"],
+    gallery: [
+      "assets/images/hotel-star-of-kurla/gallery-1.jpeg",
+      "assets/images/hotel-star-of-kurla/gallery-2.jpeg",
+      "assets/images/hotel-star-of-kurla/gallery-3.jpeg",
+      "assets/images/hotel-star-of-kurla/gallery-4.jpeg"
     ]
   }
   // {
