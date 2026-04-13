@@ -1804,6 +1804,28 @@ select {
     grid-template-columns: 1fr;
   }
 
+  .hero__visual {
+    margin-bottom: 0.9rem;
+  }
+
+  .hero__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+
+  .stat-card {
+    padding: 0.8rem 0.85rem;
+  }
+
+  .stat-card strong {
+    font-size: 1.6rem;
+  }
+
+  .stat-card span {
+    font-size: 0.88rem;
+    line-height: 1.35;
+  }
+
   .hotel-card__amenities {
     display: none;
   }
@@ -2009,6 +2031,24 @@ select {
 }
 
 @media (max-width: 480px) {
+  .hero__stats {
+    margin-top: 0.1rem;
+  }
+
+  .stat-card {
+    padding: 0.72rem 0.78rem;
+    border-radius: 16px;
+  }
+
+  .stat-card strong {
+    margin-bottom: 0.1rem;
+    font-size: 1.45rem;
+  }
+
+  .stat-card span {
+    font-size: 0.82rem;
+  }
+
   .booking-field--checkin,
   .booking-field--checkout {
     grid-column: 1 / -1;
