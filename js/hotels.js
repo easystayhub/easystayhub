@@ -164,6 +164,26 @@ window.hotelCatalog = [
       "assets/images/hotel-star-of-kurla/gallery-3.jpeg",
       "assets/images/hotel-star-of-kurla/gallery-4.jpeg"
     ]
+  },
+  {
+    slug: "vk-rooms",
+    name: "VK ROOMS",
+    shortDescription: "A practical stay option in Thamarassery with direct contact and easy booking support.",
+    description:
+      "VK ROOMS offers straightforward accommodation for travelers looking for clean rooms and convenient access in Thamarassery, Kerala.",
+    location: "Thamarassery, Kerala 673573",
+    contactPhone: "+91 97451 42020",
+    contactEmail: sharedEmail,
+    whatsapp: "919745142020",
+    heroImage: "assets/images/vk-rooms/vk-gallery-1.jpeg",
+    amenities: ["Clean Rooms", "Family Stay", "Direct WhatsApp Support", "Hot Water"],
+    gallery: [
+      "assets/images/vk-rooms/vk-gallery-1.jpeg",
+      "assets/images/vk-rooms/vk-gallery-2.jpeg",
+      "assets/images/vk-rooms/vk-gallery-3.jpeg",
+      "assets/images/vk-rooms/vk-gallery-4.jpeg",
+      "assets/images/vk-rooms/vk-gallery-5.jpeg"
+    ]
   }
   // {
   //   slug: "garden-escape",
