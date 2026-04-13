@@ -449,11 +449,16 @@ select {
   margin-top: 1rem;
 }
 
-.hero-search {
+.hero-search,
+.hotel-filter {
   margin-top: 1rem;
   display: grid;
-  gap: 0.55rem;
+  gap: 0.7rem;
   width: min(100%, 34rem);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .hero-search__copy {
@@ -474,9 +479,11 @@ select {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 0.65rem;
+  align-items: center;
 }
 
-.hero-search__controls input {
+.hero-search__controls input,
+.hotel-filter__field select {
   min-height: 52px;
   padding: 0.7rem 0.85rem;
   border: 1px solid var(--line);
@@ -484,6 +491,17 @@ select {
   background: var(--white);
   color: var(--text);
   width: 100%;
+}
+
+.hero-search__controls input:focus,
+.hotel-filter__field select:focus {
+  outline: 0;
+  border-color: rgba(19, 128, 122, 0.45);
+  box-shadow: 0 0 0 3px rgba(19, 128, 122, 0.12);
+}
+
+.hero-search__controls .button {
+  min-width: 120px;
 }
 
 .hero-search__message {
@@ -770,25 +788,11 @@ select {
   font-weight: 700;
 }
 
-.hotel-filter {
-  margin: 0 0 1rem;
-}
-
 .hotel-filter__field {
   display: grid;
   gap: 0.5rem;
-  width: min(100%, 20rem);
-  font-weight: 700;
-}
-
-.hotel-filter__field select {
-  min-height: 52px;
-  padding: 0.7rem 0.85rem;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: var(--white);
-  color: var(--text);
   width: 100%;
+  font-weight: 700;
 }
 
 .hotel-card,
@@ -1806,6 +1810,15 @@ select {
 
   .hero-search__controls {
     grid-template-columns: 1fr;
+  }
+
+  .hero-search,
+  .hotel-filter {
+    width: 100%;
+  }
+
+  .hero-search__controls .button {
+    width: 100%;
   }
 
   .room-feature {

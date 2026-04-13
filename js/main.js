@@ -50,8 +50,8 @@ function extractCityFromLocation(location) {
 
   const cityAliases = [
     { match: /mysuru|mysore/i, label: "Mysuru" },
-    { match: /gonikoppa|gonikoppal/i, label: "Gonikoppal" },
-    { match: /coorg|kodagu/i, label: "Coorg" },
+    { match: /gonikoppa|gonikoppal|coorg|kodagu/i, label: "Coorg" },
+    { match: /thamarassery|thamrasheery|kozhikode|calicut/i, label: "Kozhikode" },
     { match: /mangalore|mangaluru|thokkotu/i, label: "Mangalore" },
     { match: /mumbai|kurla/i, label: "Mumbai" }
   ];
@@ -66,6 +66,19 @@ function extractCityFromLocation(location) {
 
   const filteredParts = parts.filter((part) => !/karnataka|india|\d{6}/i.test(part));
   return filteredParts[filteredParts.length - 1] || parts[parts.length - 1] || "Other";
+}
+
+function getSortedCities() {
+  const cities = Array.from(
+    new Set(getHotels().map((hotel) => extractCityFromLocation(hotel.location)))
+  );
+
+  return cities.sort((a, b) => {
+    const aPriority = /mysuru|mysore/i.test(a) ? 0 : 1;
+    const bPriority = /mysuru|mysore/i.test(b) ? 0 : 1;
+    if (aPriority !== bPriority) return aPriority - bPriority;
+    return a.localeCompare(b);
+  });
 }
 
 function initHeroSpotlight() {
@@ -173,9 +186,7 @@ function renderHotelCards() {
 function initLocationFilter() {
   if (!locationFilter) return;
 
-  const uniqueCities = Array.from(
-    new Set(getHotels().map((hotel) => extractCityFromLocation(hotel.location)))
-  ).sort((a, b) => a.localeCompare(b));
+  const uniqueCities = getSortedCities();
 
   locationFilter.innerHTML =
     '<option value="">All locations</option>' +
@@ -187,9 +198,7 @@ function initLocationFilter() {
 function initHeroLocationSearch() {
   if (!heroSearchForm || !heroCityInput || !heroCityOptions) return;
 
-  const cities = Array.from(
-    new Set(getHotels().map((hotel) => extractCityFromLocation(hotel.location)))
-  ).sort((a, b) => a.localeCompare(b));
+  const cities = getSortedCities();
 
   heroCityOptions.innerHTML = cities.map((city) => `<option value="${city}"></option>`).join("");
 
