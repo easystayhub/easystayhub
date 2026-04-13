@@ -130,16 +130,36 @@
               simple, elegant stays, trusted hospitality, and easy direct booking all in one place.
             </p>
 
-            <div class="hero__features">
+            <!-- <div class="hero__features">
               <div class="hero-feature">WiFi</div>
               <div class="hero-feature">Parking</div>
               <div class="hero-feature">24/7 Room Service</div>
-            </div>
+            </div> -->
 
-            <div class="hero__actions">
+            <!-- <div class="hero__actions">
               <a class="button" href="#booking">Book Now</a>
               <a class="button button--ghost" href="#rooms">View Hotels</a>
-            </div>
+            </div> -->
+
+            <form class="hero-search" id="heroSearchForm" aria-label="Search hotels by city">
+              <div class="hero-search__copy">
+                <strong>Pick your perfect stay</strong>
+                <span>Enter city</span>
+              </div>
+              <div class="hero-search__controls">
+                <input
+                  type="text"
+                  id="heroCityInput"
+                  name="city"
+                  placeholder="Enter city"
+                  list="heroCityOptions"
+                  autocomplete="off"
+                >
+                <button class="button button--sm" type="submit">Search</button>
+              </div>
+              <datalist id="heroCityOptions"></datalist>
+              <p class="hero-search__message" id="heroSearchMessage" aria-live="polite"></p>
+            </form>
           </div>
 
           <div class="hero__visual">
@@ -203,11 +223,17 @@
         <div class="container">
           <div class="section-heading">
             <span class="eyebrow">Hotels</span>
-            <!-- <h2>Discover five destination hotels, each with its own atmosphere, services, and story.</h2> -->
-            <!-- <p>
-              Browse the collection below and open the hotel details page to view the image gallery, amenities, location,
-              contact details, and direct WhatsApp action for each property.
-            </p> -->
+            <h2>Pick your perfect stay</h2>
+            <p>Enter city and filter hotels by location.</p>
+          </div>
+
+          <div class="hotel-filter" aria-label="Hotel location filter">
+            <label class="hotel-filter__field" for="locationFilter">
+              Location
+              <select id="locationFilter" name="locationFilter">
+                <option value="">All locations</option>
+              </select>
+            </label>
           </div>
 
           <div class="hotel-grid" id="hotelGrid"></div>

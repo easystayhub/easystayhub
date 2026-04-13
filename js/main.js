@@ -7,6 +7,11 @@ const bookingMessage = document.getElementById("bookingMessage");
 const testimonials = Array.from(document.querySelectorAll(".testimonial"));
 const dotsContainer = document.getElementById("testimonialDots");
 const hotelGrid = document.getElementById("hotelGrid");
+const locationFilter = document.getElementById("locationFilter");
+const heroSearchForm = document.getElementById("heroSearchForm");
+const heroCityInput = document.getElementById("heroCityInput");
+const heroCityOptions = document.getElementById("heroCityOptions");
+const heroSearchMessage = document.getElementById("heroSearchMessage");
 const galleryState = {
   images: [],
   hotelName: "",
@@ -37,6 +42,30 @@ function iconMarkup(name) {
 
 function getHotels() {
   return Array.isArray(window.hotelCatalog) ? window.hotelCatalog : [];
+}
+
+function extractCityFromLocation(location) {
+  const normalizedLocation = String(location || "").trim();
+  if (!normalizedLocation) return "Other";
+
+  const cityAliases = [
+    { match: /mysuru|mysore/i, label: "Mysuru" },
+    { match: /gonikoppa|gonikoppal/i, label: "Gonikoppal" },
+    { match: /coorg|kodagu/i, label: "Coorg" },
+    { match: /mangalore|mangaluru|thokkotu/i, label: "Mangalore" },
+    { match: /mumbai|kurla/i, label: "Mumbai" }
+  ];
+
+  const aliasMatch = cityAliases.find((item) => item.match.test(normalizedLocation));
+  if (aliasMatch) return aliasMatch.label;
+
+  const parts = normalizedLocation
+    .split(",")
+    .map((part) => part.trim())
+    .filter(Boolean);
+
+  const filteredParts = parts.filter((part) => !/karnataka|india|\d{6}/i.test(part));
+  return filteredParts[filteredParts.length - 1] || parts[parts.length - 1] || "Other";
 }
 
 function initHeroSpotlight() {
@@ -91,7 +120,17 @@ function initHeroSpotlight() {
 function renderHotelCards() {
   if (!hotelGrid) return;
 
-  const hotels = getHotels();
+  const selectedCity = String(locationFilter?.value || "");
+  const hotels = getHotels().filter((hotel) => {
+    if (!selectedCity) return true;
+    return extractCityFromLocation(hotel.location) === selectedCity;
+  });
+
+  if (!hotels.length) {
+    hotelGrid.innerHTML = '<p class="hotel-grid__empty">No hotels found for this location.</p>';
+    return;
+  }
+
   hotelGrid.innerHTML = hotels
     .map(
       (hotel) => {
@@ -129,6 +168,54 @@ function renderHotelCards() {
       }
     )
     .join("");
+}
+
+function initLocationFilter() {
+  if (!locationFilter) return;
+
+  const uniqueCities = Array.from(
+    new Set(getHotels().map((hotel) => extractCityFromLocation(hotel.location)))
+  ).sort((a, b) => a.localeCompare(b));
+
+  locationFilter.innerHTML =
+    '<option value="">All locations</option>' +
+    uniqueCities.map((city) => `<option value="${city}">${city}</option>`).join("");
+
+  locationFilter.addEventListener("change", renderHotelCards);
+}
+
+function initHeroLocationSearch() {
+  if (!heroSearchForm || !heroCityInput || !heroCityOptions) return;
+
+  const cities = Array.from(
+    new Set(getHotels().map((hotel) => extractCityFromLocation(hotel.location)))
+  ).sort((a, b) => a.localeCompare(b));
+
+  heroCityOptions.innerHTML = cities.map((city) => `<option value="${city}"></option>`).join("");
+
+  heroSearchForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const enteredCity = String(heroCityInput.value || "").trim();
+    const matchedCity = cities.find((city) => city.toLowerCase() === enteredCity.toLowerCase());
+
+    if (locationFilter) {
+      locationFilter.value = matchedCity || "";
+    }
+
+    renderHotelCards();
+
+    if (heroSearchMessage) {
+      heroSearchMessage.textContent = enteredCity && !matchedCity
+        ? "No exact city match found. Showing all locations."
+        : "";
+    }
+
+    const roomsSection = document.getElementById("rooms");
+    if (roomsSection) {
+      roomsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
 }
 
 function renderHotelDetailsPage() {
@@ -556,6 +643,8 @@ if (navToggle && siteNav) {
 }
 
 syncHeaderState();
+initLocationFilter();
+initHeroLocationSearch();
 renderHotelCards();
 renderHotelDetailsPage();
 initHeroSpotlight();
