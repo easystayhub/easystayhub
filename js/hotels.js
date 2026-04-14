@@ -184,6 +184,30 @@ window.hotelCatalog = [
       "assets/images/vk-rooms/vk-gallery-4.jpeg",
       "assets/images/vk-rooms/vk-gallery-5.jpeg"
     ]
+  },
+  {
+    slug: "motel-thamarassery-inn",
+    name: "MOTEL THAMARASSERY INN",
+    shortDescription: "Luxury and budget rooms in Thamarassery with comfortable stays, direct booking support, and easy access on Wayanad Road.",
+    description:
+      "MOTEL THAMARASSERY INN offers both luxury and budget room options for travelers looking for a convenient, comfortable stay in Thamarassery. Located on Wayanad Road at Chungam, the property is suited for family trips, transit stays, and guests who want simple direct booking support.",
+    location: "Wayanad Rd, Chungam, Kozhikode, Thamarassery, Kerala 673573",
+    contactPhone: sharedPhoneDisplay,
+    contactEmail: sharedEmail,
+    whatsapp: "+91 82899 98844",
+    heroImage: "assets/images/motel-thamarassery/Motel-gallery-1.jpeg",
+    amenities: ["Luxury Rooms", "Budget Rooms", "Family Stay", "Easy Road Access", "Direct WhatsApp Support", "Hot Water"],
+    gallery: [
+      "assets/images/motel-thamarassery/Motel-gallery-1.jpeg",
+      "assets/images/motel-thamarassery/Motel-gallery-2.jpeg",
+      "assets/images/motel-thamarassery/Motel-gallery-3.jpeg",
+      "assets/images/motel-thamarassery/Motel-gallery-4.jpeg",
+      "assets/images/motel-thamarassery/Motel-gallery-5.jpeg",
+      "assets/images/motel-thamarassery/Motel-gallery-6.jpeg",
+      "assets/images/motel-thamarassery/Motel-gallery-7.jpeg",
+      "assets/images/motel-thamarassery/Motel-gallery-8.jpeg",
+      "assets/images/motel-thamarassery/motel-gallery-9.jpg"
+    ]
   }
   // {
   //   slug: "garden-escape",

@@ -1926,7 +1926,7 @@ select {
 
   .hero__visual,
   .about-visual {
-    min-height: 340px;
+    min-height: 300px;
   }
 
   .hero__stats,
@@ -2020,26 +2020,9 @@ select {
     display: none;
   }
 
-  .hotel-card__meta {
-    min-height: auto;
-    gap: 0.5rem;
-  }
-
-  .hotel-card__meta > span {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .hotel-card__meta > span:first-child > span {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    line-height: 1.45;
-  }
-
-  .hotel-card__meta > span:nth-child(2) {
-    display: none;
+  .hotel-card img,
+  .event-card img {
+    height: 160px;
   }
 
   .hero-search__controls {
@@ -2054,6 +2037,26 @@ select {
   .hotel-filter {
     padding: 0.72rem;
     border-radius: 14px;
+  }
+
+  .hotel-filter__field {
+    gap: 0.4rem;
+    font-size: 0.84rem;
+    letter-spacing: 0.015em;
+  }
+
+  .hotel-filter__field select {
+    min-height: 48px;
+    padding: 0.65rem 2.35rem 0.65rem 0.78rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+  }
+
+  .hotel-filter__field::after {
+    right: 0.85rem;
+    bottom: 0.92rem;
+    width: 0.5rem;
+    height: 0.5rem;
   }
 
   .hero-search__controls .button {
@@ -2113,6 +2116,29 @@ select {
   .gallery-item:not(.gallery-item--large):not(.gallery-item--wide) {
     grid-column: auto;
     grid-row: auto;
+  }
+
+  .location-visual {
+    min-height: 240px;
+    height: 240px;
+  }
+
+  .location-list {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: 0.85rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+    padding-bottom: 0;
+    white-space: normal;
+  }
+
+  .location-list li {
+    min-width: 0;
+    padding: 0.62rem 0.74rem;
+    border-radius: 10px;
+    font-size: 0.84rem;
+    line-height: 1.3;
   }
 
   .testimonial {
@@ -2179,7 +2205,17 @@ select {
 
   .section,
   .footer {
-    padding: 2.4rem 0 1.8rem;
+    padding: 1.75rem 0 1.2rem;
+  }
+
+  .section-heading {
+    margin-bottom: 0.65rem;
+  }
+
+  .section-copy h2,
+  .section-heading h2,
+  .cta-panel__copy h2 {
+    font-size: clamp(2rem, 7vw, 2.45rem);
   }
 
   .hero {
@@ -2218,6 +2254,7 @@ select {
 
   .location-list {
     grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
 
   .amenity-card__body {
