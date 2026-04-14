@@ -81,6 +81,47 @@ function getSortedCities() {
   });
 }
 
+function isPhoneViewport() {
+  return window.matchMedia("(max-width: 620px)").matches;
+}
+
+function createHotelCardMarkup(hotel) {
+  const mapQuery = `${hotel.name}, ${hotel.location}`;
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
+  const hotelCity = extractCityFromLocation(hotel.location);
+
+  return `
+    <article class="hotel-card">
+      <a class="hotel-card__media" href="hotel-details.html?hotel=${hotel.slug}" aria-label="View details for ${hotel.name}">
+        <img src="${hotel.heroImage}" alt="${hotel.name}" loading="lazy" decoding="async">
+        <span class="hotel-card__city">${hotelCity}</span>
+      </a>
+      <div class="hotel-card__body">
+        <div class="hotel-card__top">
+          <h3><a class="hotel-card__title-link" href="hotel-details.html?hotel=${hotel.slug}">${hotel.name}</a></h3>
+        </div>
+        <div class="hotel-card__meta">
+          <span>${iconMarkup("location")}<span>${hotel.location}</span></span>
+          <span>${iconMarkup("phone")}<span>${hotel.contactPhone}</span></span>
+        </div>
+        <div class="hotel-card__amenities">
+          ${hotel.amenities
+            .slice(0, 3)
+            .map((item) => `<span>${iconMarkup("amenity")}<span>${item}</span></span>`)
+            .join("")}
+        </div>
+        <div class="hotel-card__actions">
+          <div class="hotel-card__links">
+            <a class="text-link" href="hotel-details.html?hotel=${hotel.slug}">View Details</a>
+            <a class="text-link" href="${mapUrl}" target="_blank" rel="noreferrer">View on Map</a>
+          </div>
+          <a class="button button--sm button--full hotel-card__whatsapp" href="https://wa.me/${hotel.whatsapp}" target="_blank" rel="noreferrer">WhatsApp</a>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
 function initHeroSpotlight() {
   const title = document.querySelector("[data-hero-hotel-name]");
   const image = document.querySelector("[data-hero-hotel-image]");
@@ -134,8 +175,9 @@ function renderHotelCards() {
   if (!hotelGrid) return;
 
   const selectedCity = String(locationFilter?.value || "");
+  const mobileView = isPhoneViewport();
   const hotels = getHotels().filter((hotel) => {
-    if (!selectedCity) return true;
+    if (mobileView || !selectedCity) return true;
     return extractCityFromLocation(hotel.location) === selectedCity;
   });
 
@@ -144,43 +186,43 @@ function renderHotelCards() {
     return;
   }
 
-  hotelGrid.innerHTML = hotels
-    .map(
-      (hotel) => {
-        const mapQuery = `${hotel.name}, ${hotel.location}`;
-        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
-        return `
-        <article class="hotel-card">
-          <a class="hotel-card__media" href="hotel-details.html?hotel=${hotel.slug}" aria-label="View details for ${hotel.name}">
-            <img src="${hotel.heroImage}" alt="${hotel.name}" loading="lazy" decoding="async">
-          </a>
-          <div class="hotel-card__body">
-            <div class="hotel-card__top">
-              <h3><a class="hotel-card__title-link" href="hotel-details.html?hotel=${hotel.slug}">${hotel.name}</a></h3>
-            </div>
-            <div class="hotel-card__meta">
-              <span>${iconMarkup("location")}<span>${hotel.location}</span></span>
-              <span>${iconMarkup("phone")}<span>${hotel.contactPhone}</span></span>
-            </div>
-            <div class="hotel-card__amenities">
-              ${hotel.amenities
-                .slice(0, 3)
-                .map((item) => `<span>${iconMarkup("amenity")}<span>${item}</span></span>`)
-                .join("")}
-            </div>
-            <div class="hotel-card__actions">
-              <div class="hotel-card__links">
-                <a class="text-link" href="hotel-details.html?hotel=${hotel.slug}">View Details</a>
-                <a class="text-link" href="${mapUrl}" target="_blank" rel="noreferrer">View on Map</a>
+  if (mobileView) {
+    const cityGroups = getSortedCities()
+      .map((city) => ({
+        city,
+        hotels: hotels.filter((hotel) => extractCityFromLocation(hotel.location) === city)
+      }))
+      .filter((group) => group.hotels.length);
+
+    if (selectedCity) {
+      cityGroups.sort((a, b) => {
+        if (a.city === selectedCity) return -1;
+        if (b.city === selectedCity) return 1;
+        return 0;
+      });
+    }
+
+    hotelGrid.innerHTML = `
+      ${cityGroups
+        .map(
+          (group) => `
+            <section class="hotel-location-group" aria-label="${group.city} hotels">
+              <div class="hotel-location-group__head">
+                <h3>${group.city}</h3>
+                <span>${group.hotels.length} hotel${group.hotels.length > 1 ? "s" : ""}</span>
               </div>
-              <a class="button button--sm button--full hotel-card__whatsapp" href="https://wa.me/${hotel.whatsapp}" target="_blank" rel="noreferrer">WhatsApp</a>
-            </div>
-          </div>
-        </article>
-      `;
-      }
-    )
-    .join("");
+              <div class="hotel-location-group__rail">
+                ${group.hotels.map((hotel) => createHotelCardMarkup(hotel)).join("")}
+              </div>
+            </section>
+          `
+        )
+        .join("")}
+    `;
+    return;
+  }
+
+  hotelGrid.innerHTML = hotels.map((hotel) => createHotelCardMarkup(hotel)).join("");
 }
 
 function initLocationFilter() {
@@ -225,6 +267,11 @@ function initHeroLocationSearch() {
       roomsSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   });
+}
+
+function handleViewportResize() {
+  closeNavOnSelect();
+  renderHotelCards();
 }
 
 function renderHotelDetailsPage() {
@@ -631,7 +678,7 @@ function initBookingForm() {
 }
 
 window.addEventListener("scroll", syncHeaderState);
-window.addEventListener("resize", closeNavOnSelect);
+window.addEventListener("resize", handleViewportResize);
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeNavOnSelect();
