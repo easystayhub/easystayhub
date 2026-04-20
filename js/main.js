@@ -85,10 +85,25 @@ function isPhoneViewport() {
   return window.matchMedia("(max-width: 620px)").matches;
 }
 
+function normalizePhoneNumber(value) {
+  return String(value || "").replace(/[^\d+]/g, "");
+}
+
+function createTelLink(phoneNumber) {
+  const normalizedNumber = normalizePhoneNumber(phoneNumber);
+  return normalizedNumber ? `tel:${normalizedNumber}` : "#";
+}
+
+function createEnquiryLink(hotelSlug) {
+  return `index.html?hotel=${encodeURIComponent(hotelSlug)}#booking`;
+}
+
 function createHotelCardMarkup(hotel) {
   const mapQuery = `${hotel.name}, ${hotel.location}`;
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
   const hotelCity = extractCityFromLocation(hotel.location);
+  const callLink = createTelLink(hotel.dialPhone || hotel.contactPhone);
+  const enquiryLink = createEnquiryLink(hotel.slug);
 
   return `
     <article class="hotel-card">
@@ -115,7 +130,10 @@ function createHotelCardMarkup(hotel) {
             <a class="text-link" href="hotel-details.html?hotel=${hotel.slug}">View Details</a>
             <a class="text-link" href="${mapUrl}" target="_blank" rel="noreferrer">View on Map</a>
           </div>
-          <a class="button button--sm button--full hotel-card__whatsapp" href="https://wa.me/${hotel.whatsapp}" target="_blank" rel="noreferrer">WhatsApp</a>
+          <div class="hotel-card__cta-group">
+            <a class="button button--sm hotel-card__cta" href="${callLink}">Call Now</a>
+            <a class="button button--sm hotel-card__cta hotel-card__cta--enquire" href="${enquiryLink}">Enquire Now</a>
+          </div>
         </div>
       </div>
     </article>
@@ -625,6 +643,14 @@ function initBookingForm() {
       hotelSelect.innerHTML =
         '<option value="">Select</option>' +
         hotels.map((hotel) => `<option value="${hotel.slug}">${hotel.name}</option>`).join("");
+    }
+  }
+
+  const hotelSlugFromUrl = String(new URLSearchParams(window.location.search).get("hotel") || "").trim();
+  if (hotelSelect && hotelSlugFromUrl) {
+    const hotelExists = getHotels().some((hotel) => hotel.slug === hotelSlugFromUrl);
+    if (hotelExists) {
+      hotelSelect.value = hotelSlugFromUrl;
     }
   }
 

@@ -1058,8 +1058,32 @@ select {
   font-size: 0.9rem;
 }
 
-.hotel-card__whatsapp {
+.hotel-card__cta-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.hotel-card__cta {
+  min-height: 40px;
+  padding: 0.6rem 0.8rem;
   min-width: 0;
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.hotel-card__cta--enquire {
+  background: linear-gradient(135deg, #f2b56b, #e29a45);
+  color: #10272d;
+  border-color: rgba(162, 98, 24, 0.18);
+  box-shadow: 0 16px 30px rgba(226, 154, 69, 0.26);
+}
+
+.hotel-card__cta--enquire:hover,
+.hotel-card__cta--enquire:focus-visible {
+  box-shadow: 0 20px 34px rgba(226, 154, 69, 0.34);
 }
 
 .event-grid {
@@ -2435,6 +2459,17 @@ select {
   .hotel-card__actions .text-link {
     min-height: 32px;
     font-size: 0.86rem;
+  }
+
+  .hotel-card__cta-group {
+    gap: 0.45rem;
+  }
+
+  .hotel-card__cta {
+    min-height: 38px;
+    padding: 0.55rem 0.68rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.01em;
   }
 
   .about-visual__frame {
