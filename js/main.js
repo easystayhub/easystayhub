@@ -98,6 +98,18 @@ function createEnquiryLink(hotelSlug) {
   return `index.html?hotel=${encodeURIComponent(hotelSlug)}#booking`;
 }
 
+function getHotelImageAlt(hotel, imageType = "exterior") {
+  const city = extractCityFromLocation(hotel.location);
+  const normalizedName = String(hotel.name || "Hotel").trim();
+  const normalizedCity = city === "Other" ? "Mysore" : city;
+
+  if (imageType === "room") {
+    return `Deluxe AC Room at ${normalizedName} ${normalizedCity}`;
+  }
+
+  return `${normalizedName} exterior in ${normalizedCity}`;
+}
+
 function createHotelCardMarkup(hotel) {
   const mapQuery = `${hotel.name}, ${hotel.location}`;
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
@@ -108,7 +120,7 @@ function createHotelCardMarkup(hotel) {
   return `
     <article class="hotel-card">
       <a class="hotel-card__media" href="hotel-details.html?hotel=${hotel.slug}" aria-label="View details for ${hotel.name}">
-        <img src="${hotel.heroImage}" alt="${hotel.name}" loading="lazy" decoding="async">
+        <img src="${hotel.heroImage}" alt="${getHotelImageAlt(hotel)}" width="1200" height="900" loading="lazy" decoding="async">
         <span class="hotel-card__city">${hotelCity}</span>
       </a>
       <div class="hotel-card__body">
@@ -349,7 +361,7 @@ function renderHotelDetailsPage() {
           </div>
         </div>
         <div class="detail-hero__visual">
-          <img src="${hotel.heroImage}" alt="${hotel.name}">
+          <img src="${hotel.heroImage}" alt="${getHotelImageAlt(hotel)}" width="1200" height="900" fetchpriority="high" decoding="async">
         </div>
       </div>
     </section>
@@ -378,9 +390,11 @@ function renderHotelDetailsPage() {
             <div class="detail-gallery__stage-media">
               <img
                 src="${hotel.gallery[0]}"
-                alt="${hotel.name} gallery image 1"
+                alt="${getHotelImageAlt(hotel, "room")}"
                 class="detail-gallery__stage-image"
                 data-gallery-stage
+                width="1200"
+                height="900"
                 decoding="async"
               >
             </div>
@@ -405,7 +419,7 @@ function renderHotelDetailsPage() {
                     aria-label="View image ${index + 1}"
                     aria-pressed="${index === 0 ? "true" : "false"}"
                   >
-                    <img src="${image}" alt="${hotel.name} thumbnail ${index + 1}" loading="lazy" decoding="async">
+                    <img src="${image}" alt="${index === 0 ? getHotelImageAlt(hotel) : getHotelImageAlt(hotel, "room")}" width="1200" height="900" loading="lazy" decoding="async">
                     <span class="detail-gallery__thumb-meta">Photo ${index + 1}</span>
                   </button>
                 `
@@ -438,7 +452,7 @@ function renderHotelDetailsPage() {
         <button class="gallery-lightbox__close" type="button" aria-label="Close gallery" data-gallery-close>&times;</button>
         <button class="gallery-lightbox__nav gallery-lightbox__nav--prev" type="button" aria-label="Previous image" data-gallery-prev>&lsaquo;</button>
         <figure class="gallery-lightbox__figure">
-          <img src="${hotel.gallery[0]}" alt="${hotel.name} gallery image 1" data-gallery-modal-image decoding="async">
+          <img src="${hotel.gallery[0]}" alt="${getHotelImageAlt(hotel, "room")}" width="1200" height="900" data-gallery-modal-image decoding="async">
           <figcaption class="gallery-lightbox__caption">
             <span>${hotel.name}</span>
             <strong data-gallery-modal-counter>1 / ${hotel.gallery.length}</strong>
@@ -460,7 +474,9 @@ function updateGalleryView(index) {
   galleryState.activeIndex = normalizedIndex;
 
   const imagePath = galleryState.images[normalizedIndex];
-  const altText = `${galleryState.hotelName} gallery image ${normalizedIndex + 1}`;
+  const altText = normalizedIndex === 0
+    ? `${galleryState.hotelName} exterior`
+    : `Deluxe AC Room at ${galleryState.hotelName}`;
 
   if (galleryState.stageImage) {
     galleryState.stageImage.src = imagePath;

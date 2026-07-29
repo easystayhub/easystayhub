@@ -50,6 +50,10 @@ img {
   height: auto;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 section img,
 .hotel-card img,
 .event-card img,
@@ -794,6 +798,7 @@ select {
 .hotel-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: stretch;
+  min-height: 760px;
 }
 
 .hotel-grid__mobile-intro {
@@ -898,6 +903,7 @@ select {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 474px;
 }
 
 .hotel-card:hover,
@@ -1107,6 +1113,7 @@ select {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 180px;
   position: relative;
 }
 
@@ -1370,7 +1377,7 @@ select {
 
 .testimonial-slider {
   position: relative;
-  min-height: 250px;
+  min-height: 330px;
 }
 
 .testimonial {
@@ -1602,8 +1609,13 @@ select {
   position: static;
 }
 
+#hotelDetails {
+  min-height: 2200px;
+}
+
 .detail-hero {
   padding: 4rem 0 2rem;
+  min-height: 710px;
 }
 
 .detail-hero__layout,
@@ -2132,6 +2144,14 @@ select {
     display: none;
   }
 
+  .hotel-grid {
+    min-height: 620px;
+  }
+
+  .hotel-card {
+    min-height: 406px;
+  }
+
   .hotel-card img,
   .event-card img {
     height: 160px;
@@ -2258,6 +2278,10 @@ select {
     border-radius: 18px;
   }
 
+  .testimonial-slider {
+    min-height: 280px;
+  }
+
   .testimonials .testimonial h3 {
     font-size: 1.24rem;
   }
@@ -2359,6 +2383,7 @@ select {
     grid-template-columns: 1fr;
     gap: 1.2rem;
     padding: 0.2rem 0.15rem 1rem;
+    min-height: 680px;
   }
 
   .hotel-grid__mobile-intro {
@@ -2411,6 +2436,7 @@ select {
     border-radius: 24px;
     animation: hotelCardFloatIn 0.55s ease both;
     min-width: 0;
+    min-height: 444px;
   }
 
   .hotel-card:nth-of-type(2) {
