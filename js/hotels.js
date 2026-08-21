@@ -23,30 +23,30 @@ window.hotelCatalog = [
       "assets/images/haya-residency/reception.jpeg"
     ]
   },
-  {
-    slug: "pergola-lodge",
-    name: "PERGOLA LODGE & MULTI-CUISINE RESTAURANT",
-    shortDescription: "A spacious stay with comfortable rooms, open surroundings, and an attached multi-cuisine restaurant.",
-    description:
-      "Pergola Lodge & Multi-Cuisine Restaurant is designed for travelers who want larger room layouts, practical comfort, and on-site dining in one property. It suits family stays, group visits, and guests looking for a lodge with open space and direct support.",
-    location: "89, 4, Bannur Road, Mysuru, Karnataka 570028",
-    contactPhone: sharedPhoneDisplay,
-    dialPhone: "+91 97418 96133",
-    contactEmail: sharedEmail,
-    whatsapp: "919741896133",
-    heroImage: "assets/images/pergola-lodge/building-1.jpeg",
-    amenities: ["A/C Rooms", "Multi-Cuisine Restaurant", "Open Lawn Area", "Family Rooms", "Parking", "Direct WhatsApp Support", "Hot Water"],
-    gallery: [
-      "assets/images/pergola-lodge/building-1.jpeg",
-      "assets/images/pergola-lodge/building-2.jpeg",
-      "assets/images/pergola-lodge/room-1.jpeg",
-      "assets/images/pergola-lodge/room-2.jpeg",
-      "assets/images/pergola-lodge/room-3.jpeg",
-      "assets/images/pergola-lodge/room-4.jpeg",
-      "assets/images/pergola-lodge/room-5.jpeg",
-      "assets/images/pergola-lodge/room-6.jpeg"
-    ]
-  },
+  // {
+  //   slug: "pergola-lodge",
+  //   name: "PERGOLA LODGE & MULTI-CUISINE RESTAURANT",
+  //   shortDescription: "A spacious stay with comfortable rooms, open surroundings, and an attached multi-cuisine restaurant.",
+  //   description:
+  //     "Pergola Lodge & Multi-Cuisine Restaurant is designed for travelers who want larger room layouts, practical comfort, and on-site dining in one property. It suits family stays, group visits, and guests looking for a lodge with open space and direct support.",
+  //   location: "89, 4, Bannur Road, Mysuru, Karnataka 570028",
+  //   contactPhone: sharedPhoneDisplay,
+  //   dialPhone: "+91 97418 96133",
+  //   contactEmail: sharedEmail,
+  //   whatsapp: "919741896133",
+  //   heroImage: "assets/images/pergola-lodge/building-1.jpeg",
+  //   amenities: ["A/C Rooms", "Multi-Cuisine Restaurant", "Open Lawn Area", "Family Rooms", "Parking", "Direct WhatsApp Support", "Hot Water"],
+  //   gallery: [
+  //     "assets/images/pergola-lodge/building-1.jpeg",
+  //     "assets/images/pergola-lodge/building-2.jpeg",
+  //     "assets/images/pergola-lodge/room-1.jpeg",
+  //     "assets/images/pergola-lodge/room-2.jpeg",
+  //     "assets/images/pergola-lodge/room-3.jpeg",
+  //     "assets/images/pergola-lodge/room-4.jpeg",
+  //     "assets/images/pergola-lodge/room-5.jpeg",
+  //     "assets/images/pergola-lodge/room-6.jpeg"
+  //   ]
+  // },
   // {
   //   slug: "guru-residency",
   //   name: "GURU RESIDENCY",
