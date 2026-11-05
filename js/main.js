@@ -25,6 +25,17 @@ const galleryState = {
 };
 let heroSpotlightInterval = null;
 
+// Dedicated SEO pages for hotels; other hotels use hotel-details.html?hotel=slug
+const hotelPages = {
+  "tm-residency": "tm-residency-mysore.html",
+  "haya-residency": "haya-residency-mysore.html",
+  "royal-guest-house": "royal-guest-house-mysore.html"
+};
+
+function getHotelPageUrl(slug) {
+  return hotelPages[slug] || `hotel-details.html?hotel=${slug}`;
+}
+
 function iconMarkup(name) {
   const icons = {
     location:
@@ -119,13 +130,13 @@ function createHotelCardMarkup(hotel) {
 
   return `
     <article class="hotel-card">
-      <a class="hotel-card__media" href="hotel-details.html?hotel=${hotel.slug}" aria-label="View details for ${hotel.name}">
+      <a class="hotel-card__media" href="${getHotelPageUrl(hotel.slug)}" aria-label="View details for ${hotel.name}">
         <img src="${hotel.heroImage}" alt="${getHotelImageAlt(hotel)}" width="1200" height="900" loading="lazy" decoding="async">
         <span class="hotel-card__city">${hotelCity}</span>
       </a>
       <div class="hotel-card__body">
         <div class="hotel-card__top">
-          <h3><a class="hotel-card__title-link" href="hotel-details.html?hotel=${hotel.slug}">${hotel.name}</a></h3>
+          <h3><a class="hotel-card__title-link" href="${getHotelPageUrl(hotel.slug)}">${hotel.name}</a></h3>
         </div>
         <div class="hotel-card__meta">
           <span>${iconMarkup("location")}<span>${hotel.location}</span></span>
@@ -139,7 +150,7 @@ function createHotelCardMarkup(hotel) {
         </div>
         <div class="hotel-card__actions">
           <div class="hotel-card__links">
-            <a class="text-link" href="hotel-details.html?hotel=${hotel.slug}">View Details</a>
+            <a class="text-link" href="${getHotelPageUrl(hotel.slug)}">View Details</a>
             <a class="text-link" href="${mapUrl}" target="_blank" rel="noreferrer">View on Map</a>
           </div>
           <div class="hotel-card__cta-group">
@@ -183,7 +194,7 @@ function initHeroSpotlight() {
     title.textContent = hotel.name;
     image.src = hotel.spotlightImage || hotel.heroImage;
     image.alt = `${hotel.name} preview`;
-    const href = `hotel-details.html?hotel=${hotel.slug}`;
+    const href = getHotelPageUrl(hotel.slug);
     cardLink.href = href;
     if (footerLink) footerLink.href = href;
     if (counter) counter.textContent = `${index + 1} / ${hotels.length}`;
@@ -309,12 +320,20 @@ function renderHotelDetailsPage() {
   if (!root) return;
 
   const params = new URLSearchParams(window.location.search);
-  const slug = params.get("hotel");
+  const staticSlug = root.dataset.hotel;
+  const slug = staticSlug || params.get("hotel");
   const hotel = getHotels().find((item) => item.slug === slug) || getHotels()[0];
 
   if (!hotel) return;
 
-  const pageUrl = `https://www.easystayhub.in/hotel-details.html?hotel=${hotel.slug}`;
+  const pageUrl = `https://www.easystayhub.in/${getHotelPageUrl(hotel.slug)}`;
+
+  // Dedicated hotel pages ship their own SEO title/description in the HTML.
+  if (staticSlug) {
+    renderHotelDetailsMarkup(root, hotel);
+    return;
+  }
+
   const pageTitle = `${hotel.name} | EasyStayHub Mysore Hotel Details`;
   const pageDescription = `${hotel.name} in Mysore: amenities, room photos, contact details, map link, and direct WhatsApp support.`;
   document.title = pageTitle;
@@ -340,6 +359,10 @@ function renderHotelDetailsPage() {
   const twitterDescription = document.querySelector('meta[name="twitter:description"]');
   if (twitterDescription) twitterDescription.setAttribute("content", pageDescription);
 
+  renderHotelDetailsMarkup(root, hotel);
+}
+
+function renderHotelDetailsMarkup(root, hotel) {
   const mapQuery = `${hotel.name}, ${hotel.location}`;
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
 

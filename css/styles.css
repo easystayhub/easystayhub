@@ -2642,3 +2642,67 @@ select {
     grid-column: 1 / -1;
   }
 }
+
+/* Guest Moments (school trips & group tours) */
+.moments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.moment-card {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.moment-card:hover,
+.moment-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.moment-card a {
+  display: block;
+}
+
+.moment-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.moment-card figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.95rem 1.1rem 1.1rem;
+}
+
+.moment-card figcaption strong {
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.moment-card figcaption span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1120px) {
+  .moments-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .moments-grid {
+    grid-template-columns: 1fr;
+  }
+}
