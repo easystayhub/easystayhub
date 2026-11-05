@@ -121,6 +121,36 @@ function getHotelImageAlt(hotel, imageType = "exterior") {
   return `${normalizedName} exterior in ${normalizedCity}`;
 }
 
+// Picks an icon that matches the amenity name (display only; amenity text is unchanged).
+function amenityIconMarkup(label) {
+  const svg = (paths) =>
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${paths}</svg>`;
+  const icons = {
+    wifi: '<path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><path d="M12 20h.01"></path><path d="M2 8.82a16 16 0 0 1 20 0"></path>',
+    ac: '<path d="M12 2v20"></path><path d="m4.9 7 14.2 10"></path><path d="m4.9 17 14.2-10"></path><path d="m9 4 3 2 3-2"></path><path d="m9 20 3-2 3 2"></path>',
+    tv: '<rect x="2" y="7" width="20" height="13" rx="2"></rect><path d="m17 2-5 5-5-5"></path>',
+    water: '<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5S12.5 5.5 12 3c-.5 2.5-2 4.9-4 6.5S5 13 5 15a7 7 0 0 0 7 7z"></path>',
+    parking: '<rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M9 17V7h4a3 3 0 0 1 0 6H9"></path>',
+    chat: '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path><path d="M8 12h.01"></path><path d="M12 12h.01"></path><path d="M16 12h.01"></path>',
+    bell: '<path d="M3 19h18"></path><path d="M5 19a7 7 0 0 1 14 0"></path><path d="M12 9V6"></path><path d="M10 6h4"></path>',
+    sparkle: '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"></path><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"></path>',
+    heart: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>',
+    family: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>',
+    rupee: '<path d="M6 3h12"></path><path d="M6 8h12"></path><path d="m6 13 8.5 8"></path><path d="M6 13h3"></path><path d="M9 13c6.67 0 6.67-10 0-10"></path>',
+    road: '<path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10Z"></path><circle cx="12" cy="11" r="2.2"></circle>',
+    bed: '<path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"></path><path d="M2 17h20"></path><path d="M6 8v9"></path>',
+    check: '<path d="m5 13 4 4L19 7"></path>'
+  };
+  const rules = [
+    [/wi-?fi/i, "wifi"], [/a\/c|\bac\b|air/i, "ac"], [/\btv\b|television/i, "tv"], [/hot water|water/i, "water"],
+    [/parking/i, "parking"], [/whatsapp|support/i, "chat"], [/reception|front desk/i, "bell"],
+    [/housekeeping|clean/i, "sparkle"], [/couple/i, "heart"], [/family|group/i, "family"],
+    [/budget|afford/i, "rupee"], [/access|location|road/i, "road"], [/room|stay|bed/i, "bed"]
+  ];
+  const match = rules.find(([pattern]) => pattern.test(label));
+  return `<span class="ui-icon ui-icon--amenity" aria-hidden="true">${svg(icons[match ? match[1] : "check"])}</span>`;
+}
+
 function createHotelCardMarkup(hotel) {
   const mapQuery = `${hotel.name}, ${hotel.location}`;
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
@@ -396,7 +426,7 @@ function renderHotelDetailsMarkup(root, hotel) {
           <h2>Everything included with your stay at ${hotel.name}.</h2>
         </div>
         <div class="detail-amenities">
-          ${hotel.amenities.map((item) => `<div class="detail-amenity">${iconMarkup("amenity")}<span>${item}</span></div>`).join("")}
+          ${hotel.amenities.map((item) => `<div class="detail-amenity">${amenityIconMarkup(item)}<span>${item}</span></div>`).join("")}
         </div>
       </div>
     </section>
